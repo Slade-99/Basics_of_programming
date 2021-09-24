@@ -2,7 +2,7 @@
 
 
 from selenium import webdriver
-
+from selenium.webdriver.common.alert import Alert
 import pyperclip
 import time
 import os
@@ -16,11 +16,11 @@ import os
 class Zoom:
 
 
-    def __init__(self,username,password):
+    def __init__(self):
         
         #Login info
-        self.username = username
-        self.password = password
+#        self.username = username
+#        self.password = password
 
 
         #Driver
@@ -31,7 +31,10 @@ class Zoom:
 
 
     def start_zoom(self):
-        pass
+        self.driver.get('https://us04web.zoom.us/j/4534726949?pwd=YzhHYmNRT0ZVT3hjdEViQ29WTmVVdz09')
+        time.sleep(5)
+        Alert(self.driver).accept()
+        time.sleep(5)
 
 
 
@@ -54,9 +57,9 @@ class Zoom:
 
 
 
-def main(username,password):
-    jarvis = Zoom(username,password)
-    jarvis.login()
+def main():
+    jarvis = Zoom()
+    jarvis.start_zoom()
 
 
 
@@ -65,8 +68,7 @@ def main(username,password):
 
 
 if __name__ == "__main__":
-    username = input("Enter your usename\n")
-    password = input("Enter your password\n")
-    main(username,password)
+    
+    main()
 
 
