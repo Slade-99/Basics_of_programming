@@ -2,7 +2,8 @@
 
 
 from selenium import webdriver
-from selenium.webdriver.common.alert import Alert
+import getpass
+import pyautogui
 import pyperclip
 import time
 import os
@@ -33,8 +34,19 @@ class Zoom:
     def start_zoom(self):
         self.driver.get('https://us04web.zoom.us/j/4534726949?pwd=YzhHYmNRT0ZVT3hjdEViQ29WTmVVdz09')
         time.sleep(5)
-        Alert(self.driver).accept()
+        for i in range(2):
+
+            pyautogui.press("tab")
+            pyautogui.press("enter")
+        
+        
         time.sleep(5)
+        
+
+
+
+    def messenger_login(self):
+        pass
 
 
 
