@@ -17,11 +17,11 @@ import os
 class Zoom:
 
 
-    def __init__(self):
+    def __init__(self,username,password):
         
         #Login info
-#        self.username = username
-#        self.password = password
+        self.username = username
+        self.password = password
 
 
         #Driver
@@ -46,7 +46,12 @@ class Zoom:
 
 
     def messenger_login(self):
-        pass
+        
+        self.driver.get('https://www.messenger.com')
+
+        time.sleep(5)
+
+        
 
 
 
@@ -67,11 +72,9 @@ class Zoom:
 
 
 
-
-
-def main():
-    jarvis = Zoom()
-    jarvis.start_zoom()
+def main(username,password):
+    jarvis = Zoom(username,password)
+    jarvis.messenger_login()
 
 
 
@@ -80,7 +83,9 @@ def main():
 
 
 if __name__ == "__main__":
-    
-    main()
+    username = input("Enter your username\n")
+    password = getpass.getpass("Enter your password\n")
+
+    main(username,password)
 
 
