@@ -1,0 +1,195 @@
+to make a folder repo
+
+git init
+
+
+
+for gobal username and email:
+
+git config --gobal user.name "Slade"
+git config --gobal user.email "azwad.aziz99@outlook.com"
+
+To check the username and email
+
+git config --list
+
+
+
+
+To rescan
+git status
+
+To stage a file
+git add filename.extension
+
+
+To stage all files
+git add --all
+git add .
+
+
+
+To commit 
+
+git commit
+
+Now Press "I" button on keyboard and insert keyword will appear at bottom
+
+now at the top type the commit message for example " 2 text file added"
+now press Esc
+now press :x will show at bottom and hit enter
+
+
+
+
+
+short-cut 
+
+git commit -m "filename added"
+
+
+
+To check the commits
+git log
+for simplified view
+git log --oneline
+
+
+
+To return to previous version
+git checkout id
+
+
+To return to master
+git checkout master
+
+To see the new changes with old staging area
+git diff
+
+
+
+To see the changes made for a commit 
+git show id
+
+
+To compare to commits
+git diff (previous)id (final)id
+
+
+To see changes between recently staged items
+git diff --staged
+
+
+To remove a file
+git rm filename.extension
+
+
+After removing a file it goes to unstaged area . Now to remove from unstaged area 
+git reset HEAD filename.extension
+
+
+
+To Push to remote repo:
+First create a repo
+Then copy the text and paste it in the Git Bash 
+
+git remote add origin 'ssh key of repo'
+
+SSH key is an alternative to username and password:
+If we have used username and password once then we must remove them from windows credentials manager
+then to create ssh key
+open git bash
+ssh-keygen -t rsa -b 4096 -C "azwad.sidrat@gmail.com"
+
+then enter a passphrase(password)
+
+then type
+eval $(ssh-agent -s)
+then we will get and agent id
+
+then type
+ssh-add ~/.ssh/id_rsa
+then enter the passphrase
+
+Now to copy the ssh key
+clip < ~/.ssh/id_rsa.pub
+
+
+git push -u origin main
+
+
+To clone a remote repo to local repo
+first copy the link of the repo
+then open git bash and type
+git clone link reponame
+
+if no name is given then the local repo will have the same name as the remote repo
+
+
+
+
+To get the new changes we will use git fetch to bring the changes to the local repo from the remote repo
+type 
+git fetch
+to check for the changes
+
+type 
+git pull and type the passphrase
+
+
+
+For Branching
+To create a branch
+git branch branchname
+
+
+To check for all branches
+git branch
+
+To switch to a different branch
+git checkout branchname
+
+To create a new branch and directly switch to it 
+git checkout -b branchname
+
+
+To bring the changes of another branch to the current one, then type
+git merge branchname
+
+
+To delete a branch
+git branch -D branchname
+
+
+
+Use git stash to create a separate copy to trace back if needed
+after working then type in the git bash 
+git stash
+
+
+to swtich back to previous one 
+git stash pop / git stash apply
+
+
+To check the multiple stash 
+git stash list
+and to move to the desired stash
+git stash pop stash@{serial number}
+
+
+To delete all the untracked or unstaged files
+git clean -f
+
+
+To create files for not commiting and will not be tracked for commit , use git ignore
+touch .gitignore
+then a txt file will be created
+in the txt file type     *.extension
+
+
+To copy a project to my own repo , use git fork
+
+
+Use pull request to make and show and suggest changes to the project of others
+
+
