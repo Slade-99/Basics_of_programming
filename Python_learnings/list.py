@@ -17,7 +17,7 @@
 #count(self,value,/) -> Return the number of occurences of a value
 
 #index(self,value, start=0 , stop = 9223372036854775807 ,/)
-#      return the 1st index of a value 
+#      return the 1st index of a value
 #       raises ValueError if the value is not present
 
 #copy(self,/) -> Return a shallow copy of the list
