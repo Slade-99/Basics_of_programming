@@ -1,0 +1,93 @@
+# Task 1
+
+class KeyIndex:
+
+  def __init__(self, a):
+    self.a = a
+    max = self.max(a)
+    min = self.min(a)
+
+    if min > 0:
+      min = 0
+      self.k = [0]*(max+min+1)
+    else:
+      self.k = [0]*(max-min+1)
+
+    for i in range(len(a)):
+      self.k[self.a[i]-min] += 1
+
+  def max(self, a):
+    max = 0
+    for i in range(len(a)):
+      if a[i] > max:
+        max = a[i]
+    return max
+
+  def min(self, a):
+    min = 0
+    for i in range(len(a)):
+      if a[i] < min:
+        min = a[i]
+    return min
+
+  def search(self, val):
+    min = self.min(self.a)
+    if (val-min) < 0 or (val-min) > len(self.k):
+      return False
+
+    elif (self.k[val-min] > 0):
+      return True
+
+    else:
+      return False
+
+  def sort(self):
+    min = self.min(self.a)
+    c = 0
+    for i in range(len(self.k)):
+      if self.k[i] > 0:
+        for j in range(self.k[i]):
+          self.a[c] = i+min
+          c += 1
+
+    return self.a
+
+
+obj1 = KeyIndex([4, -2, -2, 4, -4, 7, -2, -5, 7, 2, -2, -3, -3])
+x = obj1.sort()
+print(x)
+
+
+
+# Task 2
+
+hash_table = [0]*(20)
+def hash(array):
+  for i in range(len(array)):
+    x = array[i]
+    vowels = ["A", "E", "I", "O", "U"]
+    digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    sum_digits = 0
+    consonant_count = 0
+    for i in x:
+      if (i not in vowels) and (i not in digits):
+        consonant_count += 1
+      elif i in digits:
+        sum_digits += int(i)
+
+    index = ((consonant_count*24) + (sum_digits)) % 9
+
+    if hash_table[index] == 0:
+      hash_table[index] = 1
+    else:
+      i = index+1
+      while(i < len(hash_table)):
+        if hash_table[i] == 0:
+          hash_table[i] += 1
+          break
+        else:
+          i += 1
+
+
+hash(["ST1E89B8A32", "ST1E89B8A33", "AT1E89B8A32", "AT1E89B8A31", "ST1E89B8A36"])
+print(hash_table)

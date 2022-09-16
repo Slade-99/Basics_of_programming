@@ -1,0 +1,232 @@
+# 1 (a)
+def factorial(x):
+  i = 0
+  if (x > i):
+    return x*(factorial(x-1))
+  else:
+    return 1
+
+
+factorial(5)
+
+
+# 1 (b)
+def fibo(n):
+  if (n == 0 or n == 1):
+    return n
+  else:
+    return fibo(n-1) + fibo(n-2)
+
+
+fibo(6)
+
+
+# 1(c)
+def print_array(ar,i):
+
+  if(i<len(ar)):
+    print(ar[i],end=",")
+
+    print_array(ar,i+1)
+
+print_array([1,2,3],0)
+
+
+# 1(d)
+
+def powerN(x, y):
+  if(y >= 0):
+    if(y >= 1):
+      return x*powerN(x, y-1)
+    else:
+      return 1
+  else:
+    if(y < 0):
+      return (1/x)*powerN(x, y+1)
+    else:
+      return 1
+
+powerN(2, -2)
+
+
+#Task 2 (a)
+
+def binary(n):
+  if (n != 1):
+    y = str(binary(n//2))
+    return y + str(n % 2)
+
+  else:
+    return "1"
+
+
+binary(68)
+
+
+# Task 2(b) printing
+class Node:
+  def __init__(self, value, next):
+    self.value = value
+    self.next = next
+
+
+x = [5, 6, 7, 8, 9, 10]
+
+
+def create_linked_list(x):
+    head = Node(x[0], None)
+    i = 1
+    n1 = head
+    while(i < len(x)):
+        n2 = Node(x[i], None)
+        n1.next = n2
+        n1 = n2
+        i += 1
+    return head
+
+
+final = create_linked_list(x)
+
+
+def printing(head):
+  h = head
+  if(h.next != None):
+    print(h.value)
+    printing(h.next)
+
+  else:
+    print(h.value)
+
+
+printing(final)
+
+
+# 2(c) Reverse printing
+class Node:
+  def __init__(self, value, next):
+    self.value = value
+    self.next = next
+
+
+x = [9, 10, 11]
+
+
+def create_linked_list(x):
+    head = Node(x[0], None)
+    i = 1
+    n1 = head
+    while(i < len(x)):
+        n2 = Node(x[i], None)
+        n1.next = n2
+        n1 = n2
+        i += 1
+    return head
+
+
+y = create_linked_list(x)
+
+
+def reverse_printing(head):
+    h = head
+    if(h.next != None):
+        reverse_printing(h.next)
+        print(h.value, end=" ")
+
+    else:
+        print(h.value, end=" ")
+
+reverse_printing(y)
+
+
+#3
+
+def hocBuilder(height):
+    h = height
+    if(h == 0):
+        return 0
+    else:
+        if (h != 1):
+            total = int(hocBuilder(h-1)) + 5
+        else:
+            return int(8)
+
+    return total
+
+
+print(hocBuilder(5))
+
+
+#  4  (a)
+
+def magic1(x):
+    if(x != 1):
+        y = magic1(x-1) + str(x)
+        print(y)
+        return str(y)
+    else:
+        print("1")
+        return str(1)
+
+
+output = magic1(3)
+
+
+def magic(x, spaces=-1):
+    spaces = spaces + 1
+    if(x != 1):
+        y = magic(x-1, spaces=spaces) + str(x)
+        print(" "*(spaces) + y)
+        return str(y)
+    else:
+
+        print(" "*(spaces) + "1")
+        return str(1)
+
+
+output = magic(5)
+
+
+# Task 5
+
+class FinalQ:
+
+    def print(self, array, idx):
+        if(idx < len(array)):
+            profit = self.calcProfit(array[idx])  # TO DO
+            print(f"{idx+1}. Investment: {array[idx]}; Profit: {profit}")
+            self.print(array, idx+1)
+
+    def calcProfit(self, investment):
+        if investment <= 100000:
+            profit_base = investment - 25000
+            return self.four_point_five_percent(int(profit_base/1000))
+
+        else:
+            final = investment - 100000
+            return self.eight_point_five_percent(int(final/1000)) + self.calcProfit(100000)
+
+    def four_point_five_percent(self, value):
+        if value == 0:
+            return 0
+        else:
+            if value != 1:
+                total = 45 + self.four_point_five_percent(value-1)
+                return total
+            else:
+                return 45
+
+    def eight_point_five_percent(self, value):
+        if value == 0:
+            return 0
+        else:
+            if value != 1:
+                total = 80 + self.eight_point_five_percent(value-1)
+                return total
+            else:
+                return 80
+
+
+#Tester
+array = [25000, 100000, 250000, 350000]
+f = FinalQ()
+f.print(array, 0)

@@ -1,0 +1,280 @@
+# Task 1
+
+
+def selection(a,i=0):
+    if i < len(a):    
+        min_index = i
+        j = i+1
+        while(j<len(a)):
+            
+            if(a[j]<a[min_index]):
+                min_index = j
+            j += 1
+        t = a[i]
+        a[i] = a[min_index]
+        a[min_index] = t
+        i += 1
+        return selection(a,i)
+    else:
+        return a
+
+
+x = selection([7, 1, 2, 3, 8, 6])
+print(x)
+
+
+
+# Task 2
+def insertion(a,i=1):
+    if i<len(a):
+        x = a[i]
+        j = i-1
+        while j>=0 and a[j]>x:
+
+            a[j+1] = a[j]
+            j = j-1
+        
+        a[j+1] =x
+        i += 1
+        return insertion(a,i)
+    else:
+        return a
+        
+
+x = insertion([7, 1, 2, 3, 8, 6])
+print(x)
+
+
+# Task 3
+
+
+
+a = [4,5,2,7,9,1]
+
+
+class Node:
+  def __init__(self, element, next):
+    self.element = element
+    self.next = next
+
+
+def create_linked_list(x):
+    head = Node(x[0], None)1
+    i = 1
+    n1 = head
+    while(i < len(x)):
+        n2 = Node(x[i], None)
+        n1.next = n2
+        n1 = n2
+        i += 1
+    return head
+
+x = create_linked_list(a)
+
+def bubble(a):
+    if a != None:
+        j = a.next
+        while(j != None):
+            if j.element < a.element:
+                t = a.element
+                a.element = j.element
+                j.element = t
+            j = j.next
+        a = a.next
+        return bubble(a)
+    else:
+        pass
+
+
+def printing(head):
+  h = head
+  if(h.next != None):
+    print(h.element)
+    printing(h.next)
+
+  else:
+    print(h.element)
+
+bubble(x)
+printing(x)
+
+
+
+
+# Task 4
+
+
+a = [4, 5, 2, 7, 9, 1]
+
+
+class Node:
+  def __init__(self, element, next):
+    self.element = element
+    self.next = next
+
+
+def create_linked_list(x):
+    head = Node(x[0], None)
+    i = 1
+    n1 = head
+    while(i < len(x)):
+        n2 = Node(x[i], None)
+        n1.next = n2
+        n1 = n2
+        i += 1
+    return head
+
+
+x = create_linked_list(a)
+
+
+def selection(a):
+    if a != None:
+        min_index = a
+        j = a.next
+        while(j != None):
+
+            if(j.element < min_index.element):
+                min_index = j
+            j = j.next
+        t = a.element
+        a.element = min_index.element
+        min_index.element = t
+        a = a.next
+        return selection(a)
+    else:
+        pass
+         
+
+
+
+
+
+
+
+
+
+def printing(head):
+  h = head
+  if(h.next != None):
+    print(h.element)
+    printing(h.next)
+
+  else:
+    print(h.element)
+
+
+selection(x)
+printing(x)
+
+
+
+
+# Task 5
+
+a = [4, 5, 2, 7, 9, 1]
+class Node:
+  def __init__(self, element, next,prev):
+    self.element = element
+    self.next = next
+    self.prev = prev
+
+
+def create_linked_list(x):
+    head = Node(x[0], None,None)
+    i = 1
+    n1 = head
+    while(i < len(x)):
+        n2 = Node(x[i], None,None)
+        n1.next = n2
+        n2.prev = n1
+        n1 = n2
+        i += 1
+    return head
+
+
+x = create_linked_list(a)
+
+
+def insertion(a,head):
+  if a != None:
+      x = a.element
+      j = a.prev
+      while j != None and j.element > x:
+        j.next.element = j.element
+        j = j.prev
+        
+      if j == None:
+        head.element = x
+      else:
+        j.next.element = x
+        
+        
+      
+      
+        
+      a = a.next
+      return insertion(a,head)
+  else:
+      pass
+  
+
+
+
+
+
+def printing(head):
+  h = head
+  if(h.next != None):
+    print(h.element)
+    printing(h.next)
+
+  else:
+    print(h.element)
+
+
+insertion(x.next,x)
+printing(x)
+
+
+
+# Task 6
+
+
+a = [1,2,3,4,5,6,7,8,9]
+i = 0
+j = len(a)
+def binary_search(x,i,j,a):
+    mid = (i+j)//2
+    
+    if i > j:
+        if x>a[mid]:
+            i = mid
+            return binary_search(x,i,j,a)
+        elif x<a[mid]:
+            j = mid 
+            return binary_search(x,i,j,a)
+        
+        else:
+            return True
+    else:
+        return False
+
+
+binary_search(1,i,j,a)
+
+
+
+# Task 7
+
+
+def fibo(n,dict={0:0,1:1}):
+  if (n in dict.keys()):
+    return dict[n]
+  else:
+    x =  fibo(n-1) + fibo(n-2)
+    dict[n] = x
+    return x
+
+
+fibo(10)
